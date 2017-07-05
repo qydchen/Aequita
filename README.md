@@ -1,4 +1,4 @@
-# Heavy-Metal-Polygons
+# Gentrifi
 
 ### Background
 
@@ -41,7 +41,7 @@ In addition to the entry file, there will be three scripts involved in this proj
 
 `marker.js`: this script will be responsible for handling the logic of real estate markers on the map.
 
-`.js`: .
+`data.js`: .
 
 ### Implementation Timeline
 
@@ -50,29 +50,14 @@ In addition to the entry file, there will be three scripts involved in this proj
 - Get a green bundle with `Browserify`
 - Learn enough to render the NYC subway map onto the map.
 
-**Day 2**: Dedicate this day to further expand knowledge about the Google Maps API. First, think about how to generate real estate markers when filtering by subway line.
+**Day 2**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map.
 
 - Make each subway line in the map clickable, toggling the state of the map on click.
 - Generate markers close to proximity of the subway line when toggling state.
 
+**Day 3**: Figure out how to compile the data onto Google Maps. Clean the data and do only homes. Goals for the day:
 
-**Day 3**: Create the automata logic backend.  Build out modular functions for handling the different grid types along with their unique neighbor checks and rule sets.  Incorporate the automata logic into the `Board.js` rendering.  Goals for the day:
+- Generate markers close to proximity of the subway line when toggling state.
+- Import real estate database and populate real markers on the map.
 
-- Export an `Automata` object with correct type and handling logic
-- Have a functional grid on the `HTML Baz` frontend that correctly handles iterations from one generation of the game to the next
-
-
-**Day 4**: Install the controls for the user to interact with the game.  Style the frontend, making it polished and professional.  Goals for the day:
-
-- Create controls for game speed, stop, start, reset, and shape type
-- Have a styled `HTML Baz`, nice looking controls and title
-- If time: include buttons on the side to toggle the color scheme of the cells
-
-
-### Bonus features
-
-There are many directions this cellular automata engine could eventually go.  Some anticipated updates are:
-
-- [ ] Add options for different rule sets
-- [ ] Add multiple choices for starting states that are interesting
-- [ ] Explore multi-state versions of the game, such as the ones outlined [here](https://cs.stanford.edu/people/eroberts/courses/soco/projects/2008-09/modeling-natural-systems/gameOfLife2.html)
+**Day 4**: Polish and style the app.
