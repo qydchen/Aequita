@@ -24,8 +24,7 @@ In addition, this project will include:
 This infographic will consist of a single screen with a map, and nav links to the Github, my LinkedIn,
 and the About modal. Clickable subway lines will be used to toggle between the subway lines.
 
-![wireframes]
-<!-- (https://github.com/appacademy/ny-portfolio-curriculum/blob/master/javascript-project/js-proposal-wireframe.jpg) -->
+![wireframes](./image/wireframe.png)
 
 ### Architecture and Technologies
 
@@ -47,7 +46,7 @@ In addition to the entry file, there will be three scripts involved in this proj
 
 **Day 1**: Setup all necessary Node modules, including getting webpack up and running and setting up the map in `map.js`. Write a basic entry file and the bare bones of all 3 scripts outlined above. Learn the how to generate the NYC subway on the map. Goals for the day:
 
-- Get a green bundle with `Browserify`
+- Get a green bundle with `Browserify`.
 - Learn enough to render the NYC subway map onto the map.
 
 **Day 2**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map.
