@@ -1,0 +1,19 @@
+#map {
+  height: inherit;
+  width: 75%;
+  float: left;
+}
+
+#sidebar {
+  height: inherit;
+  border-right: 1px solid transparent;
+  width: 24%;
+  float: left;
+  background: gray;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
