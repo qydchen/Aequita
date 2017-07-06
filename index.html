@@ -3,9 +3,13 @@
   <head>
     <title>Gentrifi</title>
     <link rel="stylesheet" href="./styles/main.css" />
-    <script lang="javascript" src="node_modules/xlsx/dist/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="https://use.fontawesome.com/32be08c43e.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+
     <script type="application/javascript" src="./lib/map.js"></script>
+    <script type="application/javascript" src="./lib/mapStyle.js"></script>
+    <script type="application/javascript" src="./lib/markerManager.js"></script>
   </head>
 
   <body>
@@ -43,8 +47,8 @@
     </div>
     <div id="map"></div>
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKXhYNO5CcIHcMWwB21bmWNGWRTiEhrA&callback=initMap">
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKXhYNO5CcIHcMWwB21bmWNGWRTiEhrA">
     </script>
 
 

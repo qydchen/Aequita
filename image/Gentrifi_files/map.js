@@ -14,7 +14,7 @@ function initMapData() {
     {
       key: 'https://docs.google.com/spreadsheets/d/10crZzXvtnbpM8uIp3enDP7Lv_7aXwWtp2xmhDJV-aeU/pubhtml',
       callback: function(data, tabletop) {
-        data.forEach(home => {
+        data.slice(1,3).forEach(home => {
           createMarker(home);
         } )
       },
@@ -24,20 +24,21 @@ function initMapData() {
 }
 
 function createMarker(home) {
-  const image = "https://s3.amazonaws.com/safehavns-dev/mark.png";
+  // const image = "https://s3.amazonaws.com/safehavns-dev/mark.png";
   const lat = parseFloat(home.LAT);
   const lng = parseFloat(home.LNG);
   var marker = new google.maps.Marker({
     position: {lat, lng},
-    label: {
-      color: "#ffffff",
-      fontFamily: "Helvetica",
-      text: "$"+String(home["SALE PRICE"]),
-      fontSize: "11px",
-      fontWeight: "300",
-    },
-    icon: image,
+    // label: {
+    //   color: "#ffffff",
+    //   fontFamily: "Helvetica",
+    //   text: "$"+String(home["SALE PRICE"]),
+    //   fontSize: "14.5px",
+    //   fontWeight: "700",
+    // },
+    // icon: image,
+    animation: google.maps.Animation.DROP,
     map: map,
-    id: parseInt(home.ID)
+    // id: parseInt(home.ID)
   });
 }
