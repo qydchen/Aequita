@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/qydchen/Gentrifi/issues"
   },
-  "homepage": "https://github.com/qydchen/Gentrifi#readme"
+  "homepage": "https://github.com/qydchen/Gentrifi#readme",
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
 }

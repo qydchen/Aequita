@@ -49,14 +49,14 @@ In addition to the entry file, there will be three scripts involved in this proj
 - Get a green bundle with `Browserify`.
 - Learn enough to render the NYC subway map onto the map.
 
-**Day 2**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map.
+**Day 2**: Figure out how to compile the data onto Google Maps. Clean the data and do only homes. Goals for the day:
 
-- Make each subway line in the map clickable, toggling the state of the map on click.
-- Generate markers close to proximity of the subway line when toggling state.
-
-**Day 3**: Figure out how to compile the data onto Google Maps. Clean the data and do only homes. Goals for the day:
-
-- Generate markers close to proximity of the subway line when toggling state.
 - Import real estate database and populate real markers on the map.
+- Make each subway line in the map clickable, toggling the state of the map on click.
+
+**Day 3**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map.
+
+- Generate markers close to proximity of the subway line when toggling state.
+
 
 **Day 4**: Polish and style the app.
