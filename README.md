@@ -40,7 +40,7 @@ In addition to the entry file, there will be three scripts involved in this proj
 
 `marker.js`: this script will be responsible for handling the logic of real estate markers on the map.
 
-`data.js`: .
+The real estate data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price).
 
 ### Implementation Timeline
 
