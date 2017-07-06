@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/qydchen/Gentrifi#readme",
   "dependencies": {
-    "jquery": "^3.2.1"
+    "jquery": "^3.2.1",
+    "xlsx": "^0.10.7"
   }
 }
