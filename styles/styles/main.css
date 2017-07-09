@@ -1,0 +1,71 @@
+#map {
+  height: inherit;
+  width: 75%;
+  float: left;
+}
+
+#sidebar {
+  height: inherit;
+  border-right: 1px solid transparent;
+  width: 24%;
+  float: left;
+  background: #faebd7;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#detail {
+  height: 35%;
+  margin-bottom: 60px;
+  padding: 24px;
+  font-family: sans-serif;
+  border-bottom: 2px solid black;
+}
+
+#icons {
+  overflow: auto;
+  background: white;
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 5%;
+  border: 2px solid black;
+  margin-bottom: 30px;
+}
+
+#footer {
+  margin: 0 auto;
+  height: auto;
+  display: table;
+}
+
+.icon-container {
+  float:left;
+  margin: 8px;
+}
+
+i {
+  margin: 0 8px 0 8px;
+  color: black;
+  height: 30px;
+}
+
+.infowindow {
+  font-family: sans-serif;
+  font-size: 12px;
+  margin-top: 4px;
+  width: 100%;
+}
+
+.icon-container {
+  display: flex;
+  align-content: space-around;
+}
+
+.icon {
+  margin: 0px 2px 0px 2px;
+}
