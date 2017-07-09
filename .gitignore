@@ -1,5 +1,6 @@
-
 .DS_Store
 bundle.js
 bundle.js.map
 /node_modules
+dist
+*.log
