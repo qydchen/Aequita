@@ -33,23 +33,24 @@ and the About modal. Clickable subway lines will be used to toggle between the s
 This project will be implemented with the following technologies:
 
 - `JavaScript` for programming logic,
-- `Google Map API`,
-- `Browserify` to bundle js files.???
+- `Google Map API`
 
 In addition to the entry file, there will be three scripts involved in this project:
 
 `map.js`: this script will handle the logic for creating and rendering the map.
 
-`marker.js`: this script will be responsible for handling the logic of real estate markers on the map.
+`markerManager.js`: this script will be responsible for handling the logic of real estate markers on the map.
+
+`mapStyle.js`: this script will hold the styling of the map api.
 
 The real estate data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price).
 
 ### Implementation Timeline
 
-**Day 1**: Setup all necessary Node modules, including getting webpack up and running and setting up the map in `map.js`. Write a basic entry file and the bare bones of all 3 scripts outlined above. Learn the how to generate the NYC subway on the map. Goals for the day:
+**Day 1**: Setup all necessary Node modules, including getting webpack up and running and setting up the map in `map.js`. Write a basic entry file and the bare bones of the scripts outlined above. Learn the how to generate the NYC subway on the map. Goals for the day:
 
-- Get a green bundle with `Browserify`.
 - Learn enough to render the NYC subway map onto the map.
+- Style the map.
 
 **Day 2**: Figure out how to compile the data onto Google Maps. Clean the data and do only homes. Goals for the day:
 
