@@ -1,6 +1,6 @@
 # Gentrifi
 
-[live](http://www.davidchen.world/Gentrifi)
+[View the live App](http://www.davidchen.world/Gentrifi)
 
 ### Background
 
