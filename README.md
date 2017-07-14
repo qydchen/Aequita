@@ -57,9 +57,9 @@ The real estate data will only include 1-3 family dwellings and date of sale wil
 - Import real estate database and populate real markers on the map.
 - Make each subway line in the map clickable, toggling the state of the map on click.
 
-**Day 3**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map.
+**Day 3**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map. Add geospatial data to toggle selection by neighborhoods.
 
 - Generate markers close to proximity of the subway line when toggling state.
+- Generate markers within a neighborhood upon selection
 
-
-**Day 4**: Polish and style the app.
+**Day 4**: Polish, debug, and style the app.
