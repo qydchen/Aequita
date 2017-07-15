@@ -26,6 +26,11 @@ html, body {
   border-bottom: 2px solid black;
 }
 
+.detail-item {
+  font-size: 14px;
+  margin: 4px 0 4px 0;
+}
+
 #icons {
   overflow: auto;
   background: white;
