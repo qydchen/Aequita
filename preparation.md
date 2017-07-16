@@ -2,7 +2,6 @@
 
 [View the live App](http://www.davidchen.world/Gentrifi)
 
-
 ### Background
 
 Gentrifi is a data-visualization infographic that aims to plot recent home sales price data by NYC subway lines. This infographic attempts to illustrate the correlation between real estate prices and proximity to subway lines.
