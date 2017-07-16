@@ -104,10 +104,10 @@ export const brooklyn = {
 
 ### Creating borders
 
-Loading geoJSON into Google maps API is simple.
+Loading geoJSON into Google Maps api is simple.
 
 ```JavaScript
-map.data.addGeoJson(geoString);
+  map.data.addGeoJson(geoString);
 ```
 
 Further, we can give a listener to each area like so:
@@ -116,7 +116,7 @@ Further, we can give a listener to each area like so:
   map.data.addListener('click', cb(event) {})
 ```
 
-Within the callback, I created a Google maps API Polygon class that will be the same as the neighborhood. That polygon will then be used as a filter to fetch homes in that area.
+Within the callback, I created a Google Maps api Polygon class that will be the same as the neighborhood. That polygon will then be used as a filter to fetch homes in that area.
 
 ```JavaScript
   let neighborhoodGeo = event.feature.getGeometry();
@@ -144,38 +144,93 @@ export function initMapMarkers(map, neighborhoodPoly){
 };
 ```
 
-### Architecture and Technologies
+If there are any markers already on the map, clear the markers and then fetch new markers associated to the new selected neighborhood.
 
-This project will be implemented with the following technologies:
+`totalSalePrice` and `totalSqFt` are variables used to store the sum for aggregate data for the neighborhood polygon.
 
-- `JavaScript` for programming logic,
-- `Google Map API`
+`rollingSales` is the JS array of objects that contains recent home sales.
+### Creating an individual marker
 
-In addition to the entry file, there will be three scripts involved in this project:
+When creating a marker, we have to pass in a `{lat, lng}` in order to tell Google Maps api where to plot the marker.
 
-`map.js`: this script will handle the logic for creating and rendering the map.
+```JavaScript
+function createHomeSaleMarker(home, map, neighborhoodPoly) {
+  const image = "https://s3.amazonaws.com/safehavns-dev/smart-home.png";
+  const lat = parseFloat(home["LAT"]);
+  const lng = parseFloat(home["LNG"]);
+  const latLng = new google.maps.LatLng(lat, lng);
+  if (google.maps.geometry.poly.containsLocation(latLng, neighborhoodPoly)) {
+    var marker = new google.maps.Marker({
+      position: {lat, lng},
+      icon: image,
+      map: map,
+      id: parseInt(home["ID"])
+    });
+    bindInfoWindow(marker, map,
+      "<div class='infowindow'>"
+      + "Address: " + home["ADDRESS"] +
+      "</div>" +
+      "<div class='infowindow'>"
+      + "Sale Date: " + home["SALE DATE"] +
+      "</div>" +
+      "<div class='infowindow'>"
+      + "Sale Price: " + home["SALE PRICE"] +
+      "</div>" +
+      "<div class='infowindow'>"
+      + "Building Class Category: " + home["BUILDING CLASS CATEGORY"] +
+      "</div>"
+    );
+    totalSqFt += digitInputs(home["GROSS SQUARE FEET"]);
+    totalSalePrice += digitInputs(home["SALE PRICE"]);
+    homesMarkers.push(marker);
+  };
+};
+```
 
-`markerManager.js`: this script will be responsible for handling the logic of real estate markers on the map.
+Moreover, for real estate professionals and analysts, the more detail the better. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
 
-`mapStyle.js`: this script will hold the styling of the map api.
+```JavaScript
+function bindInfoWindow(marker, map, html) {
+	var infowindow =  new google.maps.InfoWindow({
+			content: ''
+	});
+	google.maps.event.addListener(marker, 'mouseover', function() {
+		infowindow.setContent(html);
+		infowindow.open(map, marker);
+	});
+  google.maps.event.addListener(marker, 'mouseout', function() {
+		infowindow.close();
+	});
+};
+```
 
-The real estate data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price).
+Lastly, while iterating through and creating markers for a specific neighborhood, `totalSqFt` and `totalSalePrice` accumulates for aggregate calculations of that specific neighborhood.
 
-### Implementation Timeline
+```JavaScript
+export function appendStats() {
+  let stats = {};
+  stats.totalHomes = homesMarkers.length;
+  stats.asp =
+    Math.round(totalSalePrice/stats.totalHomes) ?
+    numberWithCommas(Math.round((totalSalePrice/1000)/stats.totalHomes)) :
+    null;
 
-**Day 1**: Setup all necessary Node modules, including getting webpack up and running and setting up the map in `map.js`. Write a basic entry file and the bare bones of the scripts outlined above. Learn the how to generate the NYC subway on the map. Goals for the day:
+  stats.avgsqft =
+    Math.round(totalSqFt/stats.totalHomes) ?
+    numberWithCommas(Math.round((totalSqFt/10)/stats.totalHomes) * 10) :
+    null ;
 
-- Learn enough to render the NYC subway map onto the map.
-- Style the map.
+  let aspTxt = stats.asp ? "Avg. Selling Price (000's): $" + stats.asp : "N/A";
+  let avgsqftTxt = stats.avgsqft ? "Avg. Sq. Feet: " + stats.avgsqft + " sq. ft" : "N/A";
 
-**Day 2**: Figure out how to compile the data onto Google Maps. Clean the data and do only homes. Goals for the day:
+  document.getElementById('total-homes').textContent = "Total Homes Sold: " + stats.totalHomes;
+  document.getElementById('asp').textContent = aspTxt;
+  document.getElementById('avgsqft').textContent = avgsqftTxt;
+};
+```
 
-- Import real estate database and populate real markers on the map.
-- Make each subway line in the map clickable, toggling the state of the map on click.
+## Future Directions for the Project
 
-**Day 3**: Dedicate this day to further expand knowledge about the Google Maps API. Think about how to generate real estate markers when filtering by subway line, how to connect them, etc. Then, change the style of the map. Add geospatial data to toggle selection by neighborhoods.
+#### Implement more data and make code more efficient
 
-- Generate markers close to proximity of the subway line when toggling state.
-- Generate markers within a neighborhood upon selection
-
-**Day 4**: Polish, debug, and style the app.
+Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection.
