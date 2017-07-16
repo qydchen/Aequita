@@ -4,19 +4,28 @@
     <title>Gentrifi</title>
     <link rel="stylesheet" href="./styles/main.css" />
     <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <link rel='shortcut icon' href="favicon.ico" type="image/x-icon"/>
     <script src="https://use.fontawesome.com/32be08c43e.js"></script>
     <script src="bundle.js" charset="utf-8"></script>
   </head>
 
   <body>
     <div id="sidebar">
-      <div id="detail"></div>
+      <div id="detail">
+        <div class="detail-item" id="neighborhood"></div>
+        <div class="detail-item" id="total-homes"></div>
+        <div class="detail-item" id="asp"></div>
+        <div class="detail-item" id="avgsqft"></div>
+        <div class="detail-item" id=""></div>
+        <div class="detail-item" id=""></div>
+        <div class="detail-item" id=""></div>
+      </div>
 
       <!-- <div id="icons">
         <div class='icon-container'><img class='icon 1' src="./image/1.png">   </img></div>
         <div class='icon-container'><img class='icon 2' src="./image/2.png">   </img></div>
         <div class='icon-container'><img class='icon 3' src="./image/3.png">   </img></div>
-        <div class='icon-container'><img class='icon 4' src="./image/4.png" >   </img></div>
+        <div class='icon-container'><img class='icon 4' src="./image/4.png">   </img></div>
         <div class='icon-container'><img class='icon 5' src="./image/5.png">   </img></div>
         <div class='icon-container'><img class='icon 6' src="./image/6.png">   </img></div>
         <div class='icon-container'><img class='icon 7' src="./image/7.png">   </img></div>
@@ -37,7 +46,6 @@
         <div class='icon-container'><img class='icon Z' src="./image/z.png">   </img></div>
       </div> -->
 
-
       <div id="footer">
         <a href="https://www.linkedin.com/in/qin-yong-david-chen-081b752b//" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
         <a href="https://angel.co/david-chen-84" target="_blank"><i class="fa fa-angellist fa-2x" aria-hidden="true"></i></a>
@@ -48,7 +56,7 @@
     <div id="map"></div>
 
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKXhYNO5CcIHcMWwB21bmWNGWRTiEhrA">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoKXhYNO5CcIHcMWwB21bmWNGWRTiEhrA&libraries=geometry">
     </script>
   </body>
 </html>

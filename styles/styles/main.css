@@ -26,10 +26,15 @@ html, body {
   border-bottom: 2px solid black;
 }
 
+.detail-item {
+  font-size: 14px;
+  margin: 4px 0 4px 0;
+}
+
 #icons {
   overflow: auto;
   background: white;
-  width: 200px;
+  width: 180px;
   height: auto;
   margin: 0 auto;
   border-radius: 5%;
