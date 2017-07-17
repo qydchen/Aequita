@@ -231,6 +231,6 @@ export function appendStats() {
 
 ## Future Directions for the Project
 
-#### Implement more data and make code more efficient
+#### Implement more data analytics and make code more efficient
 
-Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection.
+Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection. Further, I also intend to add more data analytics and relevant further expand on more financial metrics.
