@@ -1,8 +1,8 @@
-# Gentrifi
+# Domum
 
-[View the live App](http://www.davidchen.world/Gentrifi)
+[View the live App](http://www.davidchen.world/Domum)
 
-Gentrifi is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals and home-seekers.
+Domum is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals and home-seekers.
 
 ## Implementation
 

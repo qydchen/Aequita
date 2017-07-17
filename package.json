@@ -1,5 +1,5 @@
 {
-  "name": "Gentrifi",
+  "name": "Domum",
   "version": "1.0.0",
   "description": "### Background",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qydchen/Gentrifi.git"
+    "url": "git+https://github.com/qydchen/Domum.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qydchen/Gentrifi/issues"
+    "url": "https://github.com/qydchen/Domum/issues"
   },
-  "homepage": "https://github.com/qydchen/Gentrifi#readme",
+  "homepage": "https://github.com/qydchen/Domum#readme",
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",

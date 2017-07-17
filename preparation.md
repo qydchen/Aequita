@@ -1,10 +1,10 @@
-# Gentrifi
+# Domum
 
-[View the live App](http://www.davidchen.world/Gentrifi)
+[View the live App](http://www.davidchen.world/Domum)
 
 ### Background
 
-Gentrifi is a data-visualization infographic that aims to plot recent home sales price data by NYC subway lines. This infographic attempts to illustrate the correlation between real estate prices and proximity to subway lines.
+Domum is a data-visualization infographic that aims to plot recent home sales price data by NYC subway lines. This infographic attempts to illustrate the correlation between real estate prices and proximity to subway lines.
 
 1) Recent home sales will be plotted in Google Map API along with an overlay of the NYC subway line.
 2) Recent home sales price data in NYC is obtained from public databases from http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page.
