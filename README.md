@@ -10,7 +10,7 @@ Gentrifi is a data-visualization infographic that plot recent home sales price d
 
 The recent home sales price data in NYC is obtained from public databases from http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page. The data is then manually filtered in Excel. The real estate data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price) and oddly cheap sale prices ($10,000 for a 2-family home).
 
-The filtered excel database is converted into an array of objects from CSV after generating latitude and longitude for each of the 2517 entries.
+The excel database is cleaned and converted into a csv format in order to obtain latitude and longitude geolocations from the US Census api. Then the database is then converted into an array of objects from csv.
 
 Below is a sample of the array:
 ```JavaScript
@@ -187,7 +187,7 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
 };
 ```
 
-Moreover, for real estate professionals and analysts, the more detail the better. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
+More details are better for real estate professionals and analysts. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
 
 ```JavaScript
 function bindInfoWindow(marker, map, html) {
