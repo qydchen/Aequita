@@ -330,6 +330,19 @@ function createStationMarker(station, map, neighborhoodPoly) {
   }
 };
 
+function bindInfoWindow(marker, map, html) {
+  var infowindow = new google.maps.InfoWindow({
+    content: ''
+  });
+  google.maps.event.addListener(marker, 'mouseover', function () {
+    infowindow.setContent(html);
+    infowindow.open(map, marker);
+  });
+  google.maps.event.addListener(marker, 'mouseout', function () {
+    infowindow.close();
+  });
+};
+
 function appendStats() {
   var stats = {};
   stats.totalHomes = homesMarkers.length;
