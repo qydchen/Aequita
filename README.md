@@ -1,8 +1,8 @@
-# Domum
+# Aequita
 
-[View the live App](http://www.davidchen.world/Domum)
+[View the live App](http://www.davidchen.world/Aequita)
 
-Domum is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals and home-seekers.
+Aequita is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals working in real estate and finance, as well and home-seekers who are looking for a public data on comparable house pricing.
 
 ## Implementation
 

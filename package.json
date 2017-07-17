@@ -1,5 +1,5 @@
 {
-  "name": "Domum",
+  "name": "Aequita",
   "version": "1.0.0",
   "description": "### Background",
   "main": "index.js",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qydchen/Domum.git"
+    "url": "git+https://github.com/qydchen/Aequita.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/qydchen/Domum/issues"
+    "url": "https://github.com/qydchen/Aequita/issues"
   },
-  "homepage": "https://github.com/qydchen/Domum#readme",
+  "homepage": "https://github.com/qydchen/Aequita#readme",
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
