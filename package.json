@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "### Background",
   "main": "index.js",
+  "homepage": "qydchen.github.io/Aequita",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch",
-    "build": "cp -R image dist/image && cp -R styles dist/styles && cp -R bundle.js dist/ && cp -R index.html dist/",
+    "build": "webpack && cp -R image dist/image && cp -R styles dist/styles && cp -R bundle.js dist/ && cp -R index.html dist/",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
