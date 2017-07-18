@@ -326,7 +326,8 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
       map: map,
       id: parseInt(home["ID"])
     });
-    bindInfoWindow(marker, map, "<div class='infowindow'>" + "Address: " + home["ADDRESS"] + "</div>" + "<div class='infowindow'>" + "Sale Date: " + home["SALE DATE"] + "</div>" + "<div class='infowindow'>" + "Sale Price: $" + home["SALE PRICE"] + "</div>" + "<div class='infowindow'>" + "Year Built: " + home["YEAR BUILT"] + "</div>" + "<div class='infowindow'>" + "Land Square Feet: " + home["LAND SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Gross Square Feet: " + home["GROSS SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Building Class Category: " + home["BUILDING CLASS CATEGORY"] + "</div>");
+
+    bindInfoWindow(marker, map, "<div class='infowindow'>" + "Address: " + home["ADDRESS"] + "</div>" + "<div class='infowindow'>" + "Sale Date: " + home["SALE DATE"] + "</div>" + "<div class='infowindow'>" + "Sale Price ($): " + (0, _utils.numberWithCommas)((0, _utils.digitInputs)(home["SALE PRICE"])) + "</div>" + "<div class='infowindow'>" + "Price/Sq. Feet ($/sq. ft): " + Math.round((0, _utils.digitInputs)(home["SALE PRICE"]) / (0, _utils.digitInputs)(home["GROSS SQUARE FEET"])) + "</div>" + "<div class='infowindow'>" + "Year Built: " + home["YEAR BUILT"] + "</div>" + "<div class='infowindow'>" + "Land Square Feet: " + home["LAND SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Gross Square Feet: " + home["GROSS SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Building Class Category: " + home["BUILDING CLASS CATEGORY"] + "</div>");
     totalSqFt += (0, _utils.digitInputs)(home["GROSS SQUARE FEET"]);
     totalSalePrice += (0, _utils.digitInputs)(home["SALE PRICE"]);
     homesMarkers.push(marker);
