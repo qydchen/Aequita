@@ -19,16 +19,22 @@ html, body {
 }
 
 #detail {
-  height: 35%;
+  height: 125px;
   margin-bottom: 60px;
   padding: 24px;
   font-family: sans-serif;
   border-bottom: 1px solid lightgrey;
+  font-size: 22px;
+  margin: 0 auto;
 }
 
 .detail-item {
   font-size: 14px;
   margin: 4px 0 4px 0;
+}
+
+.detail-item:first-child {
+  margin-top: 16px;
 }
 
 #footer {
@@ -79,11 +85,13 @@ i {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: lightgrey;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 55%;
+    border-radius: 10px;
+    font-family: Helvetica;
 }
 
 .close {
@@ -101,9 +109,25 @@ i {
 }
 
 .button-container {
+  margin-top: 50px;
   width: 100%;
 }
 
 #myBtn {
   margin: 0 auto;
+  display: block;
+  margin-bottom: 100px;
+  background-color: grey;
+  border: 1px solid transparent;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+#myBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
