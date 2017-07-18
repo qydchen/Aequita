@@ -254,7 +254,7 @@ function createBorders(geoString, map) {
       visible: false
     });
 
-    (0, _markerManager.initMapMarkers)(map, neighborhoodPoly);
+    (0, _markerManager.initMapMarkers)(map, neighborhoodPoly, neighborhood);
 
     map.data.revertStyle();
     map.data.overrideStyle(event.feature, { fillColor: "green", strokeWeight: 4 });
@@ -285,16 +285,28 @@ var _rollingSales = __webpack_require__(5);
 
 var _utils = __webpack_require__(6);
 
+var filteredSales = {};
+
 var homesMarkers = [];
 var mtaMarkers = [];
 var totalSalePrice = 0;
 var totalSqFt = 0;
 
-function initMapMarkers(map, neighborhoodPoly) {
+function initMapMarkers(map, neighborhoodPoly, neighborhood) {
   clearMarkers();
   totalSalePrice = 0;
   totalSqFt = 0;
-  _rollingSales.rollingSales.forEach(function (home) {
+
+  var boundBox = (0, _utils.getBoundBoxFromPoly)(neighborhoodPoly);
+  if (!filteredSales[neighborhood]) {
+    filteredSales[neighborhood] = _rollingSales.rollingSales.filter(function (home) {
+      var lat = parseFloat(home["LAT"]);
+      var lng = parseFloat(home["LNG"]);
+      return lat > boundBox.minLat && lng > boundBox.minLng && lat < boundBox.maxLat && lng < boundBox.maxLng;
+    });
+  }
+  console.log(filteredSales);
+  filteredSales[neighborhood].forEach(function (home) {
     createHomeSaleMarker(home, map, neighborhoodPoly);
   });
 };
@@ -327,7 +339,7 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
       id: parseInt(home["ID"])
     });
 
-    bindInfoWindow(marker, map, "<div class='infowindow'>" + "Address: " + home["ADDRESS"] + "</div>" + "<div class='infowindow'>" + "Sale Date: " + home["SALE DATE"] + "</div>" + "<div class='infowindow'>" + "Sale Price ($): " + (0, _utils.numberWithCommas)((0, _utils.digitInputs)(home["SALE PRICE"])) + "</div>" + "<div class='infowindow'>" + "Price/Sq. Feet ($/sq. ft): " + Math.round((0, _utils.digitInputs)(home["SALE PRICE"]) / (0, _utils.digitInputs)(home["GROSS SQUARE FEET"])) + "</div>" + "<div class='infowindow'>" + "Year Built: " + home["YEAR BUILT"] + "</div>" + "<div class='infowindow'>" + "Land Square Feet: " + home["LAND SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Gross Square Feet: " + home["GROSS SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Building Class Category: " + home["BUILDING CLASS CATEGORY"] + "</div>");
+    bindInfoWindow(marker, map, "<div class='infowindow'>" + "Address: " + home["ADDRESS"] + "</div>" + "<div class='infowindow'>" + "Sale Date: " + home["SALE DATE"] + "</div>" + "<div class='infowindow strong'>" + "Sale Price ($): " + (0, _utils.numberWithCommas)((0, _utils.digitInputs)(home["SALE PRICE"])) + "</div>" + "<div class='infowindow'>" + "Price/Sq. Feet ($/sq. ft): " + Math.round((0, _utils.digitInputs)(home["SALE PRICE"]) / (0, _utils.digitInputs)(home["GROSS SQUARE FEET"])) + "</div>" + "<div class='infowindow'>" + "Year Built: " + home["YEAR BUILT"] + "</div>" + "<div class='infowindow'>" + "Land Square Feet: " + home["LAND SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Gross Square Feet: " + home["GROSS SQUARE FEET"] + "</div>" + "<div class='infowindow'>" + "Building Class Category: " + home["BUILDING CLASS CATEGORY"] + "</div>");
     totalSqFt += (0, _utils.digitInputs)(home["GROSS SQUARE FEET"]);
     totalSalePrice += (0, _utils.digitInputs)(home["SALE PRICE"]);
     homesMarkers.push(marker);
@@ -385,6 +397,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.digitInputs = digitInputs;
 exports.numberWithCommas = numberWithCommas;
+exports.getBoundBoxFromPoly = getBoundBoxFromPoly;
 function digitInputs(str) {
   str = str.replace(/,/g, "");
   return parseInt(str);
@@ -392,6 +405,31 @@ function digitInputs(str) {
 
 function numberWithCommas(int) {
   return int.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function getBoundBoxFromPoly(neighborhoodPoly) {
+  var polyArrays = neighborhoodPoly.latLngs.b[0].b; // returns [_.F, _.F, _.F, ....]
+  var minLat = null;
+  var maxLat = null;
+  var minLng = null;
+  var maxLng = null;
+  polyArrays.forEach(function (_f) {
+    var lat = _f.lat();
+    var lng = _f.lng();
+
+    if (lat > maxLat || !maxLat) {
+      maxLat = lat;
+    } else if (lat < minLat || !minLat) {
+      minLat = lat;
+    }
+
+    if (lng > maxLng || !maxLng) {
+      maxLng = lng;
+    } else if (lng < minLng || !minLng) {
+      minLng = lng;
+    }
+  });
+  return { minLat: minLat, minLng: minLng, maxLat: maxLat, maxLng: maxLng };
 }
 
 /***/ })
