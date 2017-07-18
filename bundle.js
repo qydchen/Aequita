@@ -405,11 +405,11 @@ function appendStats() {
 
   stats.pricePerFt = Math.round(totalSalePrice / totalSqFt) ? (0, _utils.numberWithCommas)(Math.round(totalSalePrice / totalSqFt)) : null;
 
-  var aspTxt = stats.asp ? "Avg. Selling Price (000's): $" + stats.asp : "";
-  var avgsqftTxt = stats.avgsqft ? "Avg. Sq. Feet: " + stats.avgsqft + " sq. ft" : "";
-  var pricePerFtTxt = stats.pricePerFt ? "Price/Sq. Feet: $" + stats.pricePerFt : "";
+  var aspTxt = stats.asp ? "Avg. Selling Price (000's):      $" + stats.asp : "";
+  var avgsqftTxt = stats.avgsqft ? "Avg. Sq. Feet:      " + stats.avgsqft + " sq. ft" : "";
+  var pricePerFtTxt = stats.pricePerFt ? "Price/Sq. Feet:     $" + stats.pricePerFt : "";
 
-  $('#total-homes').html("Total Homes Sold: " + stats.totalHomes);
+  $('#total-homes').html("Total Homes Sold:     " + stats.totalHomes);
   $('#asp').html(aspTxt);
   $('#avgsqft').html(avgsqftTxt);
   $('#priceperft').html(pricePerFtTxt);
