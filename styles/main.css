@@ -130,4 +130,9 @@ i {
 #myBtn:hover {
   cursor: pointer;
   text-decoration: underline;
+  background-color: black;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
 }
