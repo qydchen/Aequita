@@ -143,3 +143,7 @@ i {
 .desc {
   color: mediumblue;
 }
+
+.strong {
+  font-weight: bold;
+}
