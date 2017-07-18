@@ -2,7 +2,7 @@
 
 [View the live App](http://www.davidchen.world/Aequita)
 
-Aequita is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals working in real estate and finance, as well and home-seekers who are looking for a public data on comparable house pricing.
+Aequita is a data-visualization infographic that plot recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals working in real estate and finance, as well for home-seekers who are looking for comparable home pricing.
 
 ## Implementation
 
@@ -187,21 +187,21 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
 };
 ```
 
-More details are better for real estate professionals and analysts. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
+Real estate professionals and analysts are detail-oriented and work with granular data. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
 
 ```JavaScript
-function bindInfoWindow(marker, map, html) {
-	var infowindow =  new google.maps.InfoWindow({
-			content: ''
-	});
-	google.maps.event.addListener(marker, 'mouseover', function() {
-		infowindow.setContent(html);
-		infowindow.open(map, marker);
-	});
-  google.maps.event.addListener(marker, 'mouseout', function() {
-		infowindow.close();
-	});
-};
+  function bindInfoWindow(marker, map, html) {
+    var infowindow =  new google.maps.InfoWindow({
+      content: ''
+    });
+    google.maps.event.addListener(marker, 'mouseover', function() {
+      infowindow.setContent(html);
+      infowindow.open(map, marker);
+    });
+    google.maps.event.addListener(marker, 'mouseout', function() {
+      infowindow.close();
+    });
+  };
 ```
 
 Lastly, while iterating through and creating markers for a specific neighborhood, `totalSqFt` and `totalSalePrice` accumulates for aggregate calculations of that specific neighborhood.
@@ -218,19 +218,26 @@ export function appendStats() {
   stats.avgsqft =
     Math.round(totalSqFt/stats.totalHomes) ?
     numberWithCommas(Math.round((totalSqFt/10)/stats.totalHomes) * 10) :
-    null ;
+    null;
+
+  stats.pricePerFt = Math.round(totalSalePrice/totalSqFt) ?
+    numberWithCommas(Math.round((totalSalePrice/totalSqFt))) :
+    null;
 
   let aspTxt = stats.asp ? "Avg. Selling Price (000's): $" + stats.asp : "N/A";
   let avgsqftTxt = stats.avgsqft ? "Avg. Sq. Feet: " + stats.avgsqft + " sq. ft" : "N/A";
+  let pricePerFtTxt = stats.pricePerFt ? "Avg. Price/Avg. Sq. Feet" + stats.pricePerFt : "N/A";
 
   document.getElementById('total-homes').textContent = "Total Homes Sold: " + stats.totalHomes;
   document.getElementById('asp').textContent = aspTxt;
   document.getElementById('avgsqft').textContent = avgsqftTxt;
+  document.getElementById('priceperft').textContent = pricePerFtTxt;
 };
+
 ```
 
 ## Future Directions for the Project
 
 #### Implement more data analytics and make code more efficient
 
-Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection. Further, I also intend to add more data analytics and relevant further expand on more financial metrics.
+Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection. Further, I also intend to add more data analytics and include more financial metrics.
