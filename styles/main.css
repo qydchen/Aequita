@@ -9,7 +9,7 @@
   border-right: 1px solid transparent;
   width: 24%;
   float: left;
-  background: #faebd7;
+  background: floralwhite;
 }
 
 html, body {
@@ -19,18 +19,21 @@ html, body {
 }
 
 #detail {
-  height: 125px;
+  height: 160px;
   margin-bottom: 60px;
   padding: 24px;
   font-family: sans-serif;
   border-bottom: 1px solid lightgrey;
   font-size: 22px;
   margin: 0 auto;
+  background: ghostwhite;
 }
 
 .detail-item {
   font-size: 14px;
-  margin: 4px 0 4px 0;
+  margin: 4px 0 8px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .detail-item:first-child {
@@ -130,4 +133,13 @@ i {
 #myBtn:hover {
   cursor: pointer;
   text-decoration: underline;
+  background-color: black;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+
+.desc {
+  color: mediumblue;
 }
