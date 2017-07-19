@@ -9,7 +9,7 @@
   border-right: 1px solid transparent;
   width: 24%;
   float: left;
-  background: floralwhite;
+  background: #f5f5dc;
 }
 
 html, body {
@@ -88,11 +88,11 @@ i {
 }
 
 .modal-content {
-    background-color: lightgrey;
+    background-color: white;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 55%;
+    width: 45%;
     border-radius: 10px;
     font-family: Helvetica;
 }
@@ -120,7 +120,7 @@ i {
   margin: 0 auto;
   display: block;
   margin-bottom: 100px;
-  background-color: grey;
+  background-color: #008080;
   border: 1px solid transparent;
   color: white;
   padding: 15px 32px;
