@@ -79,7 +79,7 @@ var _createBorders = __webpack_require__(3);
 var map = void 0;
 
 $(document).ready(function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), _mapStyle.mapStyle);
+  map = new google.maps.Map($('#map'), _mapStyle.mapStyle);
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
   (0, _createBorders.createBorders)(_brooklyn.brooklyn, map);
@@ -105,9 +105,10 @@ $(document).ready(function initMap() {
     map.setCenter(new google.maps.LatLng(y, x));
   });
 
-  var modal = document.getElementById('myModal');
-  var btn = document.getElementById("myBtn");
-  var span = document.getElementsByClassName("close")[0];
+  var modal = $("#myModals");
+  var btn = $("#myBtn");
+  var span = $(".close")[0];
+
   btn.onclick = function () {
     modal.style.display = "block";
   };
@@ -244,7 +245,7 @@ function createBorders(geoString, map) {
 
   map.data.addListener('click', function (event) {
     var neighborhood = event.feature.getProperty('neighborhood');
-    document.getElementById('neighborhood').textContent = neighborhood;
+    $('#neighborhood').textContent = neighborhood;
 
     var neighborhoodGeo = event.feature.getGeometry();
     var neighborhoodPoly = new google.maps.Polygon({
@@ -285,6 +286,7 @@ var _rollingSales = __webpack_require__(5);
 
 var _utils = __webpack_require__(6);
 
+//memoization technique
 var filteredSales = {};
 
 var homesMarkers = [];
@@ -305,7 +307,7 @@ function initMapMarkers(map, neighborhoodPoly, neighborhood) {
       return lat > boundBox.minLat && lng > boundBox.minLng && lat < boundBox.maxLat && lng < boundBox.maxLng;
     });
   }
-  console.log(filteredSales);
+
   filteredSales[neighborhood].forEach(function (home) {
     createHomeSaleMarker(home, map, neighborhoodPoly);
   });
