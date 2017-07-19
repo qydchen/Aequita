@@ -162,11 +162,11 @@ var mapStyle = exports.mapStyle = {
   }, {
     featureType: 'water',
     elementType: 'geometry',
-    stylers: [{ color: '#43677d' }]
+    stylers: [{ color: '#3583ba' }]
   }, {
     featureType: 'water',
     elementType: 'labels.text.fill',
-    stylers: [{ color: '#6b6b62' }]
+    stylers: [{ color: '#ffffff' }]
   }, {
     featureType: 'water',
     elementType: 'labels.text.stroke',
