@@ -8,7 +8,7 @@ Aequita is a data-visualization infographic that plots recent home sales price d
 
 ### Gathering data
 
-The recent home sales price data in NYC is obtained from public databases from http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page. The data is then manually filtered in Excel. The real estate data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price) and oddly cheap sale prices ($10,000 for a 2-family home).
+The recent home sales price data in NYC is obtained from http://www1.nyc.gov/site/finance/taxes/property-rolling-sales-data.page. The data is then manually filtered in Excel. The data will only include 1-3 family dwellings and date of sale will only be from Jan 2017 to May 2017. The real estate data will also exclude transfer of ownerships ($0 sale price) and oddly cheap sale prices ($10,000 for a 2-family home).
 
 The excel database is cleaned and converted into a csv format in order to obtain latitude and longitude geolocations from the US Census api. Then the database is then converted into an array of objects from csv.
 
@@ -50,9 +50,9 @@ export const rollingSales = [
 ]
 ```
 
-Along with a database of rolling home sales, a database of neighborhood geoJSON has to be loaded onto Google Maps API. The geoJSON data for the various Brooklyn neighborhoods are found here: http://catalog.opendata.city/dataset/brooklyn-neighborhoods-polygon/resource/7a0a136e-b7bb-44f5-8044-f21591ef49aa
+Along with a database of rolling home sales, a database of neighborhood geoJSON has to be loaded onto Google Maps api. The geoJSON data for the various Brooklyn neighborhoods are found here: http://catalog.opendata.city/dataset/brooklyn-neighborhoods-polygon/resource/7a0a136e-b7bb-44f5-8044-f21591ef49aa
 
-Below is a sample of the shape that is required to pass into Google maps:
+Below is a sample of the geoJSON shape required to pass into Google maps:
 ```JavaScript
 export const brooklyn = {
 "type": "FeatureCollection",
@@ -187,7 +187,7 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
 };
 ```
 
-Real estate professionals and analysts are detail-oriented and work with granular data. Upon hovering over a marker, a detailed `infowindow` will display more granular information for the specific home.
+Real estate professionals and analysts work with granular data. Likewise, a detailed `infowindow` will display more granular information for a specific home.
 
 ```JavaScript
   function bindInfoWindow(marker, map, html) {
@@ -204,7 +204,7 @@ Real estate professionals and analysts are detail-oriented and work with granula
   };
 ```
 
-Lastly, while iterating through and creating markers for a specific neighborhood, `totalSqFt` and `totalSalePrice` accumulates for aggregate calculations of that specific neighborhood.
+Lastly, while iterating through and creating markers for a specific neighborhood, `totalSqFt` and `totalSalePrice` accumulates for aggregate calculations of that specific neighborhood. This will be used to populate the summary details on the top-left hand panel.
 
 ```JavaScript
 export function appendStats() {
@@ -236,8 +236,71 @@ export function appendStats() {
 
 ```
 
-## Future Directions for the Project
+## Methods of Optimization
 
-#### Implement more data analytics and make code more efficient
+### Bounding Boxes
+Upon selecting a neighborhood, the code snippets written above currently iterates through the entire rollingSales data and compares each `lat` and `lng` to each polygon coordinate. For these polygons, I created 'bounding' boxes for each in order to reduce the number of iterations on each selection.
 
-Upon selecting a neighborhood, the code currently iterates through the entire rollingSales data, making this app difficult to scale. I intend to add 'bounding' boxes for each neighborhood in order to reduce the number of iterations on each selection. Further, I also intend to add more data analytics and include more financial metrics.
+```JavaScript
+  export function getBoundBoxFromPoly(neighborhoodPoly) {
+    let polyArrays = neighborhoodPoly.latLngs.b[0].b
+    let minLat = null;
+    let maxLat = null;
+    let minLng = null;
+    let maxLng = null;
+    polyArrays.forEach(_f => {
+      let lat = _f.lat();
+      let lng = _f.lng();
+
+      if (lat > maxLat || !maxLat) {
+        maxLat = lat;
+      } else if (lat < minLat || !minLat) {
+        minLat = lat;
+      }
+
+      if (lng > maxLng || !maxLng) {
+        maxLng = lng;
+      } else if (lng < minLng || !minLng) {
+        minLng = lng;
+      }
+    })
+    return {minLat, minLng, maxLat, maxLng};
+  }
+```
+
+With this way, the program only has to iterate through an array of home objects that are found inside the bounding box, instead of the entire array.
+
+### Memoization
+
+Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. In this context, bounding boxes are associated to a `neighborhood`, and each bounding box has several hundred markers to iterate through. Using memoization, an empty object is created, and at each fetch into the database, the result is stored in the object for faster fetching.
+
+```JavaScript
+  let filteredSales = {};
+
+  export function initMapMarkers(map, neighborhoodPoly, neighborhood){
+    clearMarkers();
+    totalSalePrice = 0;
+    totalSqFt = 0;
+
+    let boundBox = getBoundBoxFromPoly(neighborhoodPoly);
+    if (!filteredSales[neighborhood]) {
+      filteredSales[neighborhood] = rollingSales.filter(function(home){
+        const lat = parseFloat(home["LAT"]);
+        const lng = parseFloat(home["LNG"]);
+        return (lat > boundBox.minLat
+          && lng > boundBox.minLng
+          && lat < boundBox.maxLat
+          && lng < boundBox.maxLng
+        )
+      })
+    }
+
+    filteredSales[neighborhood].forEach(home => {
+      createHomeSaleMarker(home, map, neighborhoodPoly);
+    })
+  };
+```
+
+## Questions?
+
+I hope this project and instruction will pave the way for another up-and-coming developer to explore the power of Google Maps api. This project has many commercial use cases ranging from data analytics to home buying. Feel free to reach out if there are any questions/concerns.
