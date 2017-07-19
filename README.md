@@ -268,7 +268,7 @@ Upon selecting a neighborhood, the code snippets written above currently iterate
   }
 ```
 
-With this way, the program only has to iterate through an array of home objects that are found inside the bounding box, instead of the entire array.
+With this way, the program iterates through the array and only have to compare against 4 corner coordinates of a rectangle instead of multiple points on an irregularly shaped polygon.
 
 ### Memoization
 
