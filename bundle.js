@@ -79,7 +79,7 @@ var _createBorders = __webpack_require__(3);
 var map = void 0;
 
 $(document).ready(function initMap() {
-  map = new google.maps.Map($('#map'), _mapStyle.mapStyle);
+  map = new google.maps.Map(document.getElementById('map'), _mapStyle.mapStyle);
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
   (0, _createBorders.createBorders)(_brooklyn.brooklyn, map);
@@ -105,21 +105,17 @@ $(document).ready(function initMap() {
     map.setCenter(new google.maps.LatLng(y, x));
   });
 
-  var modal = $("#myModals");
-  var btn = $("#myBtn");
-  var span = $(".close")[0];
-
-  btn.onclick = function () {
-    modal.style.display = "block";
-  };
-  span.onclick = function () {
-    modal.style.display = "none";
-  };
-  window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+  $("#myBtn").on("click", function () {
+    $("#myModal").show();
+  });
+  $(".close").on("click", function () {
+    $("#myModal").hide();
+  });
+  $(window).on("click", function (event) {
+    if (event.target == $("#myModal")[0]) {
+      $("#myModal").hide();
     }
-  };
+  });
 });
 
 window.map = map;
@@ -258,7 +254,7 @@ function createBorders(geoString, map) {
     (0, _markerManager.initMapMarkers)(map, neighborhoodPoly, neighborhood);
 
     map.data.revertStyle();
-    map.data.overrideStyle(event.feature, { fillColor: "green", strokeWeight: 4 });
+    map.data.overrideStyle(event.feature, { fillColor: "ghostwhite", strokeWeight: 3.5 });
 
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
