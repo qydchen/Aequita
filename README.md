@@ -149,6 +149,7 @@ If there are any markers already on the map, clear the markers and then fetch ne
 `totalSalePrice` and `totalSqFt` are variables used to store the sum for aggregate data for the neighborhood polygon.
 
 `rollingSales` is the JS array of objects that contains recent home sales.
+
 ### Creating an individual marker
 
 When creating a marker, we have to pass in a `{lat, lng}` in order to tell Google Maps api where to plot the marker.
