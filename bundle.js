@@ -282,7 +282,7 @@ var _rollingSales = __webpack_require__(5);
 
 var _utils = __webpack_require__(6);
 
-//memoization technique
+//memoization
 var filteredSales = {};
 
 var homesMarkers = [];
