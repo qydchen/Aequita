@@ -155,7 +155,7 @@ var mapStyle = exports.mapStyle = {
   }, {
     featureType: "road",
     elementType: "geometry",
-    stylers: [{ "color": "#a9a9a9" }]
+    stylers: [{ "color": "#222333" }]
   }, {
     featureType: "road.arterial",
     stylers: [{ "visibility": "off" }]
@@ -174,7 +174,7 @@ var mapStyle = exports.mapStyle = {
   }, {
     featureType: 'landscape',
     elementType: 'geometry',
-    stylers: [{ color: '#6b6b62' }]
+    stylers: [{ color: '#3d3f56', saturation: 100 }]
   }, {
     featureType: 'administrative.locality',
     stylers: [{ "visibility": "off" }]
@@ -184,7 +184,7 @@ var mapStyle = exports.mapStyle = {
   }, {
     featureType: 'administrative.neighborhood',
     elementType: 'labels.text.fill',
-    stylers: [{ "color": "#ffffff", "lightness": 100 }]
+    stylers: [{ "color": "#ffffff" }]
   }, {
     featureType: 'road',
     elementType: 'labels',
@@ -235,13 +235,15 @@ function createBorders(geoString, map) {
   map.data.addGeoJson(geoString);
   map.data.setStyle(function (feature) {
     return {
-      strokeWeight: 1
+      fillColor: "#333333",
+      fillOpacity: 0.3,
+      strokeWeight: 1.5
     };
   });
 
   map.data.addListener('click', function (event) {
     var neighborhood = event.feature.getProperty('neighborhood');
-    $('#neighborhood').textContent = neighborhood;
+    $('#neighborhood').html(neighborhood);
 
     var neighborhoodGeo = event.feature.getGeometry();
     var neighborhoodPoly = new google.maps.Polygon({
@@ -254,7 +256,7 @@ function createBorders(geoString, map) {
     (0, _markerManager.initMapMarkers)(map, neighborhoodPoly, neighborhood);
 
     map.data.revertStyle();
-    map.data.overrideStyle(event.feature, { fillColor: "ghostwhite", strokeWeight: 3.5 });
+    map.data.overrideStyle(event.feature, { fillColor: "#ffe500", fillOpacity: 0.2, strokeWeight: 3.5 });
 
     var lat = event.latLng.lat();
     var lng = event.latLng.lng();
