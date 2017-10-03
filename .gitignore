@@ -4,4 +4,3 @@ bundle.js.map
 /node_modules
 dist
 *.log
-scratchcode.js
