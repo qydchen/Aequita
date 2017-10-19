@@ -16,20 +16,20 @@ Below is a sample of the array:
 ```JavaScript
 export const rollingSales = [
   {
-  "ID": 2268,
-  "ADDRESS": "1208 8TH AVENUE",
-  "CITY": "Brooklyn",
-  "STATE": "NY",
-  "ZIP CODE": 11215,
-  "LNG": -73.980804,
-  "LAT": 40.663864,
-  "NEIGHBORHOOD": "PARK SLOPE",
-  "BUILDING CLASS CATEGORY": "03 THREE FAMILY DWELLINGS",
-  "LAND SQUARE FEET": "1,284",
-  "GROSS SQUARE FEET": "2,080",
-  "YEAR BUILT": 1899,
-  "SALE PRICE": "1,670,000",
-  "SALE DATE": "4/20/17"
+    "ID": 2268,
+    "ADDRESS": "1208 8TH AVENUE",
+    "CITY": "Brooklyn",
+    "STATE": "NY",
+    "ZIP CODE": 11215,
+    "LNG": -73.980804,
+    "LAT": 40.663864,
+    "NEIGHBORHOOD": "PARK SLOPE",
+    "BUILDING CLASS CATEGORY": "03 THREE FAMILY DWELLINGS",
+    "LAND SQUARE FEET": "1,284",
+    "GROSS SQUARE FEET": "2,080",
+    "YEAR BUILT": 1899,
+    "SALE PRICE": "1,670,000",
+    "SALE DATE": "4/20/17"
   },
   {
     "ID": 2269,
