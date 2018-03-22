@@ -284,7 +284,6 @@ var _rollingSales = __webpack_require__(5);
 
 var _utils = __webpack_require__(6);
 
-//memoization
 var filteredSales = {};
 
 var homesMarkers = [];
@@ -317,13 +316,8 @@ function clearMarkers() {
       home.setMap(null);
     }
   });
-  mtaMarkers = mtaMarkers.map(function (station) {
-    if (station !== undefined) {
-      station.setMap(null);
-    }
-  });
+
   homesMarkers = [];
-  mtaMarkers = [];
 };
 
 function createHomeSaleMarker(home, map, neighborhoodPoly) {
@@ -331,6 +325,7 @@ function createHomeSaleMarker(home, map, neighborhoodPoly) {
   var lat = parseFloat(home["LAT"]);
   var lng = parseFloat(home["LNG"]);
   var latLng = new google.maps.LatLng(lat, lng);
+
   if (google.maps.geometry.poly.containsLocation(latLng, neighborhoodPoly)) {
     var marker = new google.maps.Marker({
       position: { lat: lat, lng: lng },
