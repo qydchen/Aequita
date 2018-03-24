@@ -1,7 +1,5 @@
 # Aequita
 
-[View the live App](http://www.davidchen.world/Aequita)
-
 Aequita is a data-visualization infographic that plots recent home sales price data by neighborhood. This infographic aims to show a concept that can be expanded as a tool for various professionals working in real estate and finance, as well for home-seekers who are looking for comparable home pricing.
 
 ## Implementation
